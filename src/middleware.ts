@@ -4,24 +4,26 @@ export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get("accessToken")
   const { pathname } = request.nextUrl
 
-  if (accessToken) {
-    if (pathname === "/") {
-      return NextResponse.redirect(new URL("/transfer", request.url))
-    }
+  if (accessToken && pathname === "/") {
+    return NextResponse.redirect(new URL("/transfer", request.url))
   }
+
   if (!accessToken) {
-    if (pathname === "/transfer") {
-      return NextResponse.next()
-    }
-    if (pathname === "/vocationalmanage") {
-      return NextResponse.redirect(new URL("/", request.url))
-    }
-    if (pathname === "/manageaccount") {
-      return NextResponse.redirect(new URL("/", request.url))
-    }
-    if (pathname === "/universitymanage") {
+    const restrictedPaths = [
+      "/vocationalmanage",
+      "/manageaccount",
+      "/universitymanage",
+      "/department"
+    ]
+
+    if (restrictedPaths.includes(pathname)) {
       return NextResponse.redirect(new URL("/", request.url))
     }
   }
+
   return NextResponse.next()
+}
+
+export const config = {
+  matcher: ["/((?!api|static|.*\\..*|_next).*)"]
 }
