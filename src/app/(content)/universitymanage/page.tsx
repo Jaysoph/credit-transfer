@@ -315,7 +315,7 @@ export default function UniversityManage() {
     })
   }
   const handleOpenDeleteUniCourse = (item: any) => {
-    setSelectUniCourseId(item.id)
+    setSelectUniCourseId(item.uniId)
     setModalDeleteData({
       uniCourseId: item.uniCourseId,
       uniCourseName: item.uniCourseName,
@@ -327,11 +327,19 @@ export default function UniversityManage() {
   }
 
   const handleDeleteSubmit = () => {
-    const data = onDeleteUniCourse(selectUniCourseId).then(() => {
-      setSelectUniCourseId(0)
-      handleRefresh()
-      CloseDeleteUniCourse()
-    })
+    try {
+      const data = onDeleteUniCourse(selectUniCourseId).then(() => {
+        setSelectUniCourseId(0)
+        handleRefresh()
+        CloseDeleteUniCourse()
+      })
+    } catch (error) {
+      toast({
+        title: "ลบวิชาไม่สำเร็จ",
+        status: "error",
+        isClosable: true
+      })
+    }
   }
   const handleCloseUniSearchData = () => {
     setSearchCourseData({

@@ -1,5 +1,4 @@
 import { Box, Img, useToast } from "@chakra-ui/react"
-import { ImageCustom } from "../Image/Image"
 import Button from "../Button/Button"
 import { RiLogoutBoxFill } from "@remixicon/react"
 import logo from "../../asset/image/logo.png"
@@ -53,6 +52,7 @@ const SideBar = ({ id }: { id: number }) => {
     }
     return false
   }
+
   return (
     <Box display="flex">
       {checkRole() ? (
@@ -71,9 +71,12 @@ const SideBar = ({ id }: { id: number }) => {
         >
           <Img
             width={220}
-            height={108}
+            height="auto"
             src="https://credit-transferz2.s3.ap-southeast-1.amazonaws.com/img/logo.png"
             alt={"logo"}
+            style={{
+              objectFit: "contain"
+            }}
           />
           <Box
             display="flex"
@@ -99,6 +102,7 @@ const SideBar = ({ id }: { id: number }) => {
                   borderRadius="8px"
                   backgroundColor={id == 1 ? " #00E0FF" : "white"}
                 />
+
                 <Button
                   paddingY="8px"
                   paddingX="60px"
@@ -176,9 +180,12 @@ const SideBar = ({ id }: { id: number }) => {
           <Box>
             <Img
               width={220}
-              height={108}
+              height="auto"
               src="https://credit-transferz2.s3.ap-southeast-1.amazonaws.com/img/logo.png"
               alt={"logo"}
+              style={{
+                objectFit: "contain"
+              }}
             />
           </Box>
 

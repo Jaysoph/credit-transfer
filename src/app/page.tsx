@@ -161,6 +161,21 @@ export default function Home() {
           </Box>
         </Box>
       </Box>
+
+      <Box
+        display="flex"
+        width="100%"
+        background=" linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)"
+        position="absolute"
+        bottom="0px"
+        left="0px"
+        justifyContent="center"
+        fontWeight={700}
+        color="black"
+      >
+        พัฒนาโดย นายโจเซฟ เฉิน ,นายโจนาธาน เฉิน สาขาวิทยาการคอมพิวเตอร์
+        คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยหอการค้าไทย
+      </Box>
     </Box>
   )
 }
